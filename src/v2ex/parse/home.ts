@@ -1,5 +1,7 @@
 import puppeteer from 'puppeteer';
+import cheerio from 'cheerio';
 export async function parseHome(html: string) {
+  const $ = cheerio.load(html);
   const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
   const page = await browser.newPage();
   await page.setContent(html);
@@ -36,6 +38,7 @@ export async function parseHome(html: string) {
   })
 
 
+
   // 获取列表数据
   const listData = await page.$$eval('#Main .box .item tbody', eles => {
     return eles.map((child) => {
@@ -66,6 +69,9 @@ export async function parseHome(html: string) {
       }
     })
   })
+  const listBody = $('#Main .box .item tbody');
+  const title = listBody.find('.item_title a');
+  console.log(title)
 
   await browser.close();
   const resData = {
