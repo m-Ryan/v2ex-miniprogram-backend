@@ -3,6 +3,7 @@ import { getPuppeteerPage } from '@/utils/puppeteer-page';
 import { parseHome } from './parse/home';
 import { parseList } from './parse/list';
 import { parseDetail } from './parse/detail';
+import { parseReplay } from './parse/replay';
 
 @Injectable()
 export class V2exService {
@@ -18,9 +19,13 @@ export class V2exService {
   }
   
   async getDetailPage(url: string) {
-    console.log('1111')
     const html = await getPuppeteerPage(url)
     return parseDetail(html)
+  }
+  
+  async getDetailReplay(url: string) {
+    const html = await getPuppeteerPage(url)
+    return parseReplay(html)
   }
 
 

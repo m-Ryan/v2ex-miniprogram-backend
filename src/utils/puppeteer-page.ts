@@ -1,12 +1,13 @@
 
-import puppeteer from 'puppeteer';
 import { MOCK_COOKIE } from '@/constants';
+import Axios from 'axios';
 
 export async function getPuppeteerPage(pageUrl: string) {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
-  const page = await browser.newPage();
   try {
-    page.setExtraHTTPHeaders({
+  const beginTime = new Date().getTime();
+  console.log('爬取开始');
+  let data = await Axios.get(pageUrl, {
+    headers: {
       'scheme': 'https',
       'Content-Type': 'application/x-www-form-urlencoded',
       'Cookie': MOCK_COOKIE,
@@ -18,15 +19,16 @@ export async function getPuppeteerPage(pageUrl: string) {
       'DNT': '1',
       'Upgrade-Insecure-Requests': '1',
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'
-    })
-   
-    await page.goto(pageUrl, { waitUntil: "networkidle0" })
-    const html = await page.content();
-    await browser.close();
-    return html
+    }
+  });
+    const endTime = new Date().getTime();
+    console.log('爬取结束');
+    console.log(`耗时${endTime - beginTime}ms`);
+ 
+    return data.data
   } catch (err) {
     console.error(err);
-    await browser.close();
+
     throw new Error("page.goto/waitForSelector timed out.");
   }
 

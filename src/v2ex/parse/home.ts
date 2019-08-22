@@ -10,7 +10,7 @@ export async function parseHome(html: string) {
       return {
         avatar: child.querySelector('img').getAttribute('src'),
         url: child.querySelector('.item_hot_topic_title a').getAttribute('href'),
-        text: child.querySelector('.item_hot_topic_title a').textContent,
+        name: child.querySelector('.item_hot_topic_title a').textContent,
       }
     })
   })
@@ -20,7 +20,7 @@ export async function parseHome(html: string) {
     return eles.map((child) => {
       return {
         url: child.getAttribute('href'),
-        text: child.textContent,
+        name: child.textContent,
       }
     })
   })
@@ -30,7 +30,7 @@ export async function parseHome(html: string) {
     return eles.map((child) => {
       return {
         url: child.getAttribute('href'),
-        text: child.textContent,
+        name: child.textContent,
       }
     })
   })
@@ -53,7 +53,7 @@ export async function parseHome(html: string) {
           name_url: user.getAttribute('href'),
         },
         relative: {
-          text: relative.textContent,
+          name: relative.textContent,
           url: relative.getAttribute('href'),
         },
         last_replay: {
