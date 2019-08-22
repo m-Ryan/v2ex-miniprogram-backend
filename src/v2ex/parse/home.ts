@@ -40,10 +40,11 @@ export async function parseHome(html: string) {
   const listData = await page.$$eval('#Main .box .item tbody', eles => {
     return eles.map((child) => {
       const title = child.querySelector('.item_title a');
-      const relative = child.querySelector('.topic_info .node');
+      const tag = child.querySelector('.topic_info .node');
       const user = child.querySelector('.topic_info strong a');
       const replayer = child.querySelectorAll('.topic_info strong a')[1];
-      const replayTime = child.querySelector('.topic_info').textContent.replace(/(.*)•\s+(.*)\s+•\s+/, '$2').replace('最后回复来自', '').replace(replayer ? replayer.textContent : '', '').replace(user.textContent, '').trim();
+      const replayTime = child.querySelector('.topic_info').textContent.replace(/(.*)•\s+(.*)\s+•\s+/, '$2')
+      .replace('最后回复来自', '').replace(replayer ? replayer.textContent : '', '').replace(user.textContent, '').trim();
       return {
         title: title.textContent,
         url: title.getAttribute('href'),
@@ -52,14 +53,14 @@ export async function parseHome(html: string) {
           name: user.textContent,
           name_url: user.getAttribute('href'),
         },
-        relative: {
-          name: relative.textContent,
-          url: relative.getAttribute('href'),
+        tag: {
+          text: tag.textContent,
+          url: tag.getAttribute('href'),
         },
         last_replay: {
           time: replayTime,
           user_name: replayer && replayer.textContent,
-          user_name_url: replayer && replayer.getAttribute('href'),
+          user_url: replayer && replayer.getAttribute('href'),
         },
         replay_count: child.querySelector('.count_livid') ? child.querySelector('.count_livid').textContent : 0
       }
