@@ -28,8 +28,6 @@ export async function getPuppeteerPage(pageUrl: string) {
     return data.data
   } catch (err) {
     console.error(err);
-
-    throw new Error("page.goto/waitForSelector timed out.");
   }
 
 }

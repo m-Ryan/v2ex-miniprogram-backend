@@ -1,29 +1,23 @@
-import puppeteer from 'puppeteer';
+import cheerio from 'cheerio';
 
 export async function parseReplay(html: string) {
   try {
-    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
-    const page = await browser.newPage();
-    await page.setContent(html);
+    const $ = cheerio.load(html);
 
-    // 获取列表数据
-    const list = await page.$$eval('#Main .box .cell', eles => {
-      return eles.filter(item => item.getAttribute('id')).map((child) => {
-        return {
-          user: {
-            name: child.querySelector('td strong a.dark').textContent,
-            url: child.querySelector('td strong a.dark').getAttribute('href'),
-            avatar: child.querySelector('img').getAttribute('src'),
-          },
-          content: child.querySelector('.reply_content').textContent,
-          floor_num: child.querySelector('.no').textContent,
-          love_num: child.querySelector('.small.fade') ? child.querySelector('.small.fade').textContent.replace(/(.*?)(\d+)/, '$2') : 0,
-          time: child.querySelector('.ago').textContent
-        }
-      })
-    })
-
-    await browser.close();
+      // 获取列表数据
+  const list = $('#Main .box .cell').toArray().filter((item)=>!!item.attribs['id']).map((child)=> {
+    return {
+      user: {
+       name:$(child).find('td strong a.dark').text(),
+       url:$(child).find('td strong a.dark').attr('href'),
+       avatar:$(child).find('img').attr['src'],
+      },
+      content:$(child).find('.reply_content').text(),
+      floor_num:$(child).find('.no').text(),
+      love_num:$(child).find('.small.fade') ?$(child).find('.small.fade').text().replace(/(.*?)(\d+)/, '$2') : 0,
+      time:$(child).find('.ago').text()
+    }
+   })
 
     return list;
   } catch (error) {
