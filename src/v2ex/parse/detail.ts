@@ -5,16 +5,14 @@ export async function parseDetail(html: string) {
   // 获取基本数据
   const title = $('h1').text();
   const desc = $('.markdown_body').text();
-  const pageNodes =  $('#Main .box .page_normal');
-  const page_count = pageNodes.length > 0 ? pageNodes.eq(pageNodes.length - 1).text() : 1;
-
+  const page_count = Number($('#Main .box .page_input').val() || 0);
   const tags = $('#Main .tag').map((index, ele) => {
     return {
-      text: $(ele).text(),
+      name: $(ele).text(),
       href: ele.attribs['href'],
     }
   }).toArray()
-  const moreInfoNode =  $('#Main .box .header .gray');
+  const moreInfoNode = $('#Main .box .header .gray');
 
   const userLink = $(moreInfoNode).find('a').eq(0);
   const content =  moreInfoNode.text();
@@ -31,7 +29,7 @@ export async function parseDetail(html: string) {
       user: {
        name:$(child).find('td strong a.dark').text(),
        url:$(child).find('td strong a.dark').attr('href'),
-       avatar:$(child).find('img').attr['src'],
+       avatar:$(child).find('img').attr('src'),
       },
       content:$(child).find('.reply_content').text(),
       floor_num: Number($(child).find('.no').text() || 0),
@@ -46,6 +44,7 @@ export async function parseDetail(html: string) {
     tags,
     time,
     user,
+    content,
     replay: {
       list: list,
       page_count

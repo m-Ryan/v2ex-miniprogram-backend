@@ -4,6 +4,8 @@ import { parseHome } from './parse/home';
 import { parseList } from './parse/list';
 import { parseDetail } from './parse/detail';
 import { parseReplay } from './parse/replay';
+import { parseNode } from './parse/node';
+import { parseUserInfo } from './parse/userInfo';
 
 @Injectable()
 export class V2exService {
@@ -27,6 +29,15 @@ export class V2exService {
     const html = await getPuppeteerPage(url)
     return parseReplay(html)
   }
-
+  
+  async getNodeList(url: string) {
+    const html = await getPuppeteerPage(url)
+    return parseNode(html)
+  }
+  
+  async getUserInfo(url: string) {
+    const html = await getPuppeteerPage(url)
+    return parseUserInfo(html)
+  }
 
 }

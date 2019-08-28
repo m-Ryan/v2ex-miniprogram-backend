@@ -1,7 +1,23 @@
 import cheerio from 'cheerio';
 export async function parseHome(html: string) {
   const $ = cheerio.load(html);
- 
+
+  const avatar = $('#Rightbar .avatar').attr('src');
+  const nickname = $('.bigger a').text()
+
+  // tab
+  const tabs = $('#Tabs a').toArray().map(child=>{
+    return {
+      name: $(child).text(),
+      url: $(child).attr('href')
+    }
+  })
+ const secondary_tabs  = $('#SecondaryTabs a').toArray().map(child=>{
+  return {
+    name: $(child).text(),
+    url: $(child).attr('href')
+  }
+})
   // 今日热议主题
   const topicsHot =$('#TopicsHot table').toArray().map((child) => {
     return {
@@ -12,7 +28,7 @@ export async function parseHome(html: string) {
   })
 
   // 最热节点
-  const hotNodes =$('#Rightbar .cell .item_node').map((child) => {
+  const hotNodes =$('#Rightbar .cell .item_node').toArray().map((child) => {
     return {
       url: $(child).attr('href'),
       name: $(child).text(),
@@ -20,7 +36,7 @@ export async function parseHome(html: string) {
   })
 
   // 最近新增节点
-  const newNodes =$('#Rightbar .inner .item_node').map((child) => {
+  const newNodes =$('#Rightbar .inner .item_node').toArray().map((child) => {
     return {
       url: $(child).attr('href'),
       name: $(child).text(),
@@ -39,12 +55,12 @@ export async function parseHome(html: string) {
       title: title.text(),
       url: title.attr('href'),
       user: {
-        avatar: $('img').attr('src'),
+        avatar: $(child).find('img').attr('src'),
         name: user.text(),
-        name_url: user.attr('href'),
+        url: user.attr('href'),
       },
       tag: {
-        text: tag.text(),
+        name: tag.text(),
         url: tag.attr('href'),
       },
       last_replay: {
@@ -52,16 +68,20 @@ export async function parseHome(html: string) {
         user_name: replayer && replayer.text(),
         user_url: replayer && replayer.attr('href'),
       },
-      replay_count: $('.count_livid') ? $('.count_livid').text() : 0
+      replay_count:  $(child).find('.count_livid') ? $(child).find('.count_livid').text() : 0
     }
   })
-  const listBody = $('#Main .box .item tbody');
-  const title = listBody.find('.item_title a');
   const resData = {
+    user: {
+      avatar,
+      nickname
+    },
     hot_nodes: hotNodes,
     new_nodes: newNodes,
     topic: topicsHot,
-    list: listData
+    list: listData,
+    tabs,
+    secondary_tabs
   }
   return resData;
 }

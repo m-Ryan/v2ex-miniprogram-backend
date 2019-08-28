@@ -4,13 +4,13 @@ export async function parseReplay(html: string) {
   try {
     const $ = cheerio.load(html);
 
-      // 获取列表数据
+  // 获取列表数据
   const list = $('#Main .box .cell').toArray().filter((item)=>!!item.attribs['id']).map((child)=> {
     return {
       user: {
        name:$(child).find('td strong a.dark').text(),
        url:$(child).find('td strong a.dark').attr('href'),
-       avatar:$(child).find('img').attr['src'],
+       avatar:$(child).find('img').attr('src'),
       },
       content:$(child).find('.reply_content').text(),
       floor_num: Number($(child).find('.no').text() || 0),
@@ -18,7 +18,7 @@ export async function parseReplay(html: string) {
       time:$(child).find('.ago').text()
     }
    })
-
+   
     return list;
   } catch (error) {
     console.log(error.message);
