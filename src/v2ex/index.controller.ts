@@ -2,11 +2,14 @@ import {
   Controller,
   Get,
   Query,
+  CacheInterceptor,
+  UseInterceptors,
 } from '@nestjs/common';
 import { V2exService } from './index.service';
 import { BASE_URL } from '../constants';
 
 @Controller('v2ex')
+@UseInterceptors(CacheInterceptor)
 export class V2exController {
   constructor(private readonly service: V2exService) {}
 
