@@ -1,4 +1,4 @@
-import { MOCK_COOKIE } from '@/constants';
+import { MOCK_COOKIE } from '../constants';
 import Axios from 'axios';
 
 export async function getPuppeteerPage(pageUrl: string) {

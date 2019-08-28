@@ -15,7 +15,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const puppeteer_page_1 = require("@/utils/puppeteer-page");
+const puppeteer_page_1 = require("../utils/puppeteer-page");
 const home_1 = require("./parse/home");
 const list_1 = require("./parse/list");
 const detail_1 = require("./parse/detail");

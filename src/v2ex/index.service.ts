@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { getPuppeteerPage } from '@/utils/puppeteer-page';
+import { getPuppeteerPage } from '../utils/puppeteer-page';
 import { parseHome } from './parse/home';
 import { parseList } from './parse/list';
 import { parseDetail } from './parse/detail';

@@ -6,7 +6,7 @@ import {
   CacheInterceptor,
 } from '@nestjs/common';
 import { V2exService } from './index.service';
-import { BASE_URL } from '@/constants';
+import { BASE_URL } from '../constants';
 
 @Controller('v2ex')
 @UseInterceptors(CacheInterceptor)
