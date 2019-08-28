@@ -537,6 +537,11 @@ any-promise@^1.3.0:
   version "1.3.0"
   resolved "http://npm.goweike.cn/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
 
+any-promise@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npm.taobao.org/any-promise/download/any-promise-0.1.0.tgz#830b680aa7e56f33451d4b049f3bd8044498ee27"
+  integrity sha1-gwtoCqflbzNFHUsEnzvYBESY7ic=
+
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "http://npm.goweike.cn/anymatch/-/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
@@ -624,7 +629,7 @@ async-limiter@~1.0.0:
   version "1.0.1"
   resolved "http://npm.goweike.cn/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
 
-async@1.5.2:
+async@1.5.2, async@^1.4.2, async@^1.5.2:
   version "1.5.2"
   resolved "http://npm.goweike.cn/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -824,6 +829,19 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+cache-manager-fs-binary@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npm.taobao.org/cache-manager-fs-binary/download/cache-manager-fs-binary-1.0.4.tgz#effd0759666449dbf014607a48ea2536cbdeb576"
+  integrity sha1-7/0HWWZkSdvwFGB6SOolNsvetXY=
+  dependencies:
+    async "^1.4.2"
+    cache-manager "^1.1.0"
+    extend "^3.0.0"
+    fs-promise "^0.3.1"
+    glob "^7.0.3"
+    streamifier "^0.1.1"
+    uuid "^2.0.1"
+
 cache-manager-memcached-store@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/cache-manager-memcached-store/download/cache-manager-memcached-store-2.1.0.tgz#6ccba72435bb65867788dd2e06379b271f79919d"
@@ -838,6 +856,14 @@ cache-manager-redis-store@^1.5.0:
   integrity sha1-b5o6DsMcqRpcVs2bddbWKrmilqs=
   dependencies:
     redis "^2.7.1"
+
+cache-manager@^1.1.0:
+  version "1.5.0"
+  resolved "https://registry.npm.taobao.org/cache-manager/download/cache-manager-1.5.0.tgz#529214bda57fa19514d106f070fabb16c3190811"
+  integrity sha1-UpIUvaV/oZUU0QbwcPq7FsMZCBE=
+  dependencies:
+    async "^1.5.2"
+    lru-cache "4.0.0"
 
 cache-manager@^2.10.0:
   version "2.10.0"
@@ -1744,6 +1770,13 @@ fs-minipass@^1.2.5:
   dependencies:
     minipass "^2.2.1"
 
+fs-promise@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npm.taobao.org/fs-promise/download/fs-promise-0.3.1.tgz#bf34050368f24d6dc9dfc6688ab5cead8f86842a"
+  integrity sha1-vzQFA2jyTW3J38ZoirXOrY+GhCo=
+  dependencies:
+    any-promise "~0.1.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "http://npm.goweike.cn/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -1803,7 +1836,7 @@ glob-parent@^3.1.0:
     is-glob "^3.1.0"
     path-dirname "^1.0.0"
 
-glob@^7.1.1, glob@^7.1.2, glob@^7.1.3:
+glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3:
   version "7.1.4"
   resolved "http://npm.goweike.cn/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
   dependencies:
@@ -4062,6 +4095,11 @@ stream-combiner@~0.0.4:
   dependencies:
     duplexer "~0.1.1"
 
+streamifier@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npm.taobao.org/streamifier/download/streamifier-0.1.1.tgz#97e98d8fa4d105d62a2691d1dc07e820db8dfc4f"
+  integrity sha1-l+mNj6TRBdYqJpHR3AfoINuN/E8=
+
 streamsearch@0.1.2:
   version "0.1.2"
   resolved "http://npm.goweike.cn/streamsearch/-/streamsearch-0.1.2.tgz#808b9d0e56fc273d809ba57338e929919a1a9f1a"
@@ -4534,6 +4572,11 @@ utils-merge@1.0.1:
 uuid@3.3.2, uuid@^3.3.2:
   version "3.3.2"
   resolved "http://npm.goweike.cn/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+
+uuid@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.npm.taobao.org/uuid/download/uuid-2.0.3.tgz?cache=0&sync_timestamp=1566221202613&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuuid%2Fdownload%2Fuuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
+  integrity sha1-Z+LoY3lyFVMN/zGOW/nc6/1Hsho=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
