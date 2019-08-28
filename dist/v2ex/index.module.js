@@ -13,12 +13,7 @@ let V2exModule = class V2exModule {
 };
 V2exModule = __decorate([
     common_1.Module({
-        imports: [
-            common_1.CacheModule.register({
-                ttl: 60,
-                max: 300,
-            }),
-        ],
+        imports: [],
         controllers: [index_controller_1.V2exController],
         providers: [index_service_1.V2exService],
     })

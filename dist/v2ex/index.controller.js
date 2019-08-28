@@ -116,7 +116,6 @@ __decorate([
 ], V2exController.prototype, "getUserInfo", null);
 V2exController = __decorate([
     common_1.Controller('v2ex'),
-    common_1.UseInterceptors(common_1.CacheInterceptor),
     __metadata("design:paramtypes", [index_service_1.V2exService])
 ], V2exController);
 exports.V2exController = V2exController;

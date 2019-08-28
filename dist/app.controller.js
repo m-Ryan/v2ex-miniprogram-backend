@@ -19,17 +19,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const cachePageMap = {};
-const postData = {
-    name_key: '',
-    password_key: '',
-    code_key: '',
-    once: '',
-    next: '/',
-    name_value: 'ryan19961996',
-    password_value: '41841800',
-    code_value: '',
-};
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
