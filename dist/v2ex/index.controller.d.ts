@@ -3,7 +3,7 @@ import { V2exService } from './index.service';
 export declare class V2exController {
     private readonly service;
     constructor(service: V2exService);
-    getHome(tab?: string): Promise<{
+    getHome(tab?: string, cookie?: string): Promise<{
         user: {
             avatar: string;
             nickname: string;
@@ -49,7 +49,7 @@ export declare class V2exController {
             url: string;
         }[];
     }>;
-    getList(page?: number): Promise<{
+    getList(page?: number, cookie?: string): Promise<{
         page_count: number;
         list: {
             title: string;
@@ -71,7 +71,7 @@ export declare class V2exController {
             replay_count: number;
         }[];
     }>;
-    getDetail(id?: number): Promise<{
+    getDetail(id?: number, cookie?: string): Promise<{
         title: string;
         desc: string;
         tags: CheerioElement[];
@@ -96,7 +96,7 @@ export declare class V2exController {
             page_count: number;
         };
     }>;
-    getDetailReplay(id?: number, page?: number): Promise<"" | {
+    getDetailReplay(id?: number, page?: number, cookie?: string): Promise<"" | {
         user: {
             name: string;
             url: string;
@@ -107,7 +107,7 @@ export declare class V2exController {
         love_num: string | number;
         time: string;
     }[]>;
-    getNodeList(name: string, page?: number): Promise<"" | {
+    getNodeList(name: string, page?: number, cookie?: string): Promise<"" | {
         slogans: string;
         avatar: string;
         relative: {
@@ -132,7 +132,7 @@ export declare class V2exController {
             replay_count: number;
         }[];
     }>;
-    getUserInfo(nickname: string): Promise<"" | {
+    getUserInfo(nickname: string, cookie?: string): Promise<"" | {
         avatar: string;
         nickname: string;
         bigger: string;

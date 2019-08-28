@@ -23,39 +23,39 @@ const replay_1 = require("./parse/replay");
 const node_1 = require("./parse/node");
 const userInfo_1 = require("./parse/userInfo");
 let V2exService = class V2exService {
-    getHomePage(url) {
+    getHomePage(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return home_1.parseHome(html);
         });
     }
-    getListPage(url) {
+    getListPage(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return list_1.parseList(html);
         });
     }
-    getDetailPage(url) {
+    getDetailPage(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return detail_1.parseDetail(html);
         });
     }
-    getDetailReplay(url) {
+    getDetailReplay(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return replay_1.parseReplay(html);
         });
     }
-    getNodeList(url) {
+    getNodeList(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return node_1.parseNode(html);
         });
     }
-    getUserInfo(url) {
+    getUserInfo(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
-            const html = yield puppeteer_page_1.getPuppeteerPage(url);
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return userInfo_1.parseUserInfo(html);
         });
     }

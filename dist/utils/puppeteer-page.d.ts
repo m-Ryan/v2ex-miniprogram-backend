@@ -1,1 +1,1 @@
-export declare function getPuppeteerPage(pageUrl: string): Promise<any>;
+export declare function getPuppeteerPage(pageUrl: string, cookie: string): Promise<any>;

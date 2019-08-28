@@ -27,91 +27,93 @@ let V2exController = class V2exController {
     constructor(service) {
         this.service = service;
     }
-    getHome(tab = 'tech') {
+    getHome(tab = 'tech', cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/?tab=${tab}`;
-            const html = yield this.service.getHomePage(pageUrl);
+            const html = yield this.service.getHomePage(pageUrl, cookie);
             return html;
         });
     }
-    getList(page = 1) {
+    getList(page = 1, cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/recent?p=${page}`;
-            const html = yield this.service.getListPage(pageUrl);
+            const html = yield this.service.getListPage(pageUrl, cookie);
             return html;
         });
     }
-    getDetail(id = 1) {
+    getDetail(id = 1, cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/t/${id}`;
-            const html = yield this.service.getDetailPage(pageUrl);
+            const html = yield this.service.getDetailPage(pageUrl, cookie);
             return html;
         });
     }
-    getDetailReplay(id = 1, page = 1) {
+    getDetailReplay(id = 1, page = 1, cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/t/${id}?p=${page}`;
-            const html = yield this.service.getDetailReplay(pageUrl);
+            const html = yield this.service.getDetailReplay(pageUrl, cookie);
             return html;
         });
     }
-    getNodeList(name, page = 1) {
+    getNodeList(name, page = 1, cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/go/${name}?p=${page}`;
-            const html = yield this.service.getNodeList(pageUrl);
+            const html = yield this.service.getNodeList(pageUrl, cookie);
             return html;
         });
     }
-    getUserInfo(nickname) {
+    getUserInfo(nickname, cookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
             const pageUrl = `${constants_1.BASE_URL}/member/${nickname}`;
-            const html = yield this.service.getUserInfo(pageUrl);
+            const html = yield this.service.getUserInfo(pageUrl, cookie);
             return html;
         });
     }
 };
 __decorate([
     common_1.Get('tab'),
-    __param(0, common_1.Query('tab')),
+    __param(0, common_1.Query('tab')), __param(1, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getHome", null);
 __decorate([
     common_1.Get('list'),
-    __param(0, common_1.Query('page')),
+    __param(0, common_1.Query('page')), __param(1, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getList", null);
 __decorate([
     common_1.Get('detail'),
-    __param(0, common_1.Query('id')),
+    __param(0, common_1.Query('id')), __param(1, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getDetail", null);
 __decorate([
     common_1.Get('detail-replay'),
     __param(0, common_1.Query('id')),
     __param(1, common_1.Query('page')),
+    __param(2, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:paramtypes", [Number, Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getDetailReplay", null);
 __decorate([
     common_1.Get('node-list'),
     __param(0, common_1.Query('name')),
     __param(1, common_1.Query('page')),
+    __param(2, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Number]),
+    __metadata("design:paramtypes", [String, Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getNodeList", null);
 __decorate([
     common_1.Get('user-info'),
-    __param(0, common_1.Query('nickname')),
+    __param(0, common_1.Query('nickname')), __param(1, common_1.Query('cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getUserInfo", null);
 V2exController = __decorate([

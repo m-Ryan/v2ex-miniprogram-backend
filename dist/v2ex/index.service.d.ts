@@ -1,6 +1,6 @@
 /// <reference types="cheerio" />
 export declare class V2exService {
-    getHomePage(url: string): Promise<{
+    getHomePage(url: string, cookie: string): Promise<{
         user: {
             avatar: string;
             nickname: string;
@@ -46,7 +46,7 @@ export declare class V2exService {
             url: string;
         }[];
     }>;
-    getListPage(url: string): Promise<{
+    getListPage(url: string, cookie: string): Promise<{
         page_count: number;
         list: {
             title: string;
@@ -68,7 +68,7 @@ export declare class V2exService {
             replay_count: number;
         }[];
     }>;
-    getDetailPage(url: string): Promise<{
+    getDetailPage(url: string, cookie: string): Promise<{
         title: string;
         desc: string;
         tags: CheerioElement[];
@@ -93,7 +93,7 @@ export declare class V2exService {
             page_count: number;
         };
     }>;
-    getDetailReplay(url: string): Promise<"" | {
+    getDetailReplay(url: string, cookie: string): Promise<"" | {
         user: {
             name: string;
             url: string;
@@ -104,7 +104,7 @@ export declare class V2exService {
         love_num: string | number;
         time: string;
     }[]>;
-    getNodeList(url: string): Promise<"" | {
+    getNodeList(url: string, cookie: string): Promise<"" | {
         slogans: string;
         avatar: string;
         relative: {
@@ -129,7 +129,7 @@ export declare class V2exService {
             replay_count: number;
         }[];
     }>;
-    getUserInfo(url: string): Promise<"" | {
+    getUserInfo(url: string, cookie: string): Promise<"" | {
         avatar: string;
         nickname: string;
         bigger: string;

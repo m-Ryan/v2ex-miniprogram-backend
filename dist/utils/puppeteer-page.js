@@ -11,9 +11,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = require("../constants");
 const axios_1 = __importDefault(require("axios"));
-function getPuppeteerPage(pageUrl) {
+function getPuppeteerPage(pageUrl, cookie) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const beginTime = new Date().getTime();
@@ -22,7 +21,7 @@ function getPuppeteerPage(pageUrl) {
                 headers: {
                     scheme: 'https',
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    Cookie: constants_1.MOCK_COOKIE,
+                    Cookie: cookie,
                     Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
                     'Accept-Encoding': 'gzip, deflate, br',
                     'Accept-Language': 'zh-CN,zh;q=0.9,und;q=0.8',
