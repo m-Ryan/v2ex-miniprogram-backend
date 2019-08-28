@@ -832,6 +832,13 @@ cache-manager-memcached-store@^2.1.0:
     memcache-plus "0.2.16"
     xtend "4.0.1"
 
+cache-manager-redis-store@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npm.taobao.org/cache-manager-redis-store/download/cache-manager-redis-store-1.5.0.tgz#6f9a3a0ec31ca91a5c56cd9b75d6d62ab9a296ab"
+  integrity sha1-b5o6DsMcqRpcVs2bddbWKrmilqs=
+  dependencies:
+    redis "^2.7.1"
+
 cache-manager@^2.10.0:
   version "2.10.0"
   resolved "https://registry.npm.taobao.org/cache-manager/download/cache-manager-2.10.0.tgz#278e9f8784e5d7e6617bfe350358c8ccd17387bf"
@@ -1336,6 +1343,11 @@ dot-prop@^4.1.0:
   resolved "http://npm.goweike.cn/dot-prop/-/dot-prop-4.2.0.tgz#1f19e0c2e1aa0e32797c49799f2837ac6af69c57"
   dependencies:
     is-obj "^1.0.0"
+
+double-ended-queue@^2.1.0-0:
+  version "2.1.0-0"
+  resolved "https://registry.npm.taobao.org/double-ended-queue/download/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+  integrity sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -3637,6 +3649,25 @@ realpath-native@^1.1.0:
   resolved "http://npm.goweike.cn/realpath-native/-/realpath-native-1.1.0.tgz#2003294fea23fb0672f2476ebe22fcf498a2d65c"
   dependencies:
     util.promisify "^1.0.0"
+
+redis-commands@^1.2.0:
+  version "1.5.0"
+  resolved "https://registry.npm.taobao.org/redis-commands/download/redis-commands-1.5.0.tgz#80d2e20698fe688f227127ff9e5164a7dd17e785"
+  integrity sha1-gNLiBpj+aI8icSf/nlFkp90X54U=
+
+redis-parser@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.npm.taobao.org/redis-parser/download/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
+  integrity sha1-Uu0J2srBCPGmMcB+m2mUHnoZUEs=
+
+redis@^2.7.1:
+  version "2.8.0"
+  resolved "https://registry.npm.taobao.org/redis/download/redis-2.8.0.tgz#202288e3f58c49f6079d97af7a10e1303ae14b02"
+  integrity sha1-ICKI4/WMSfYHnZevehDhMDrhSwI=
+  dependencies:
+    double-ended-queue "^2.1.0-0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.6.0"
 
 reflect-metadata@^0.1.12:
   version "0.1.13"
