@@ -9,33 +9,33 @@ import { parseUserInfo } from './parse/userInfo';
 
 @Injectable()
 export class V2exService {
-  async getHomePage(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getHomePage(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseHome(html);
   }
 
-  async getListPage(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getListPage(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseList(html);
   }
 
-  async getDetailPage(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getDetailPage(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseDetail(html);
   }
 
-  async getDetailReplay(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getDetailReplay(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseReplay(html);
   }
 
-  async getNodeList(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getNodeList(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseNode(html);
   }
 
-  async getUserInfo(url: string) {
-    const html = await getPuppeteerPage(url);
+  async getUserInfo(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
     return parseUserInfo(html);
   }
 }

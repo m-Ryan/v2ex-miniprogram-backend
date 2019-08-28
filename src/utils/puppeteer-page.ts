@@ -1,7 +1,6 @@
-import { MOCK_COOKIE } from '../constants';
 import Axios from 'axios';
 
-export async function getPuppeteerPage(pageUrl: string) {
+export async function getPuppeteerPage(pageUrl: string, cookie: string) {
   try {
     const beginTime = new Date().getTime();
     console.log('爬取开始');
@@ -9,7 +8,7 @@ export async function getPuppeteerPage(pageUrl: string) {
       headers: {
         scheme: 'https',
         'Content-Type': 'application/x-www-form-urlencoded',
-        Cookie: MOCK_COOKIE,
+        Cookie: cookie,
         Accept:
           'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
         'Accept-Encoding': 'gzip, deflate, br',
