@@ -5,6 +5,7 @@ import {
   CacheInterceptor,
   UseInterceptors,
   Post,
+  Headers,
 } from '@nestjs/common';
 import { V2exService } from './index.service';
 import { BASE_URL, MOCK_COOKIE } from '../constants';
@@ -15,21 +16,21 @@ export class V2exController {
   constructor(private readonly service: V2exService) {}
 
   @Get('tab')
-  async getHome(@Query('tab') tab: string = 'tech', @Query('cookie') cookie: string = MOCK_COOKIE) {
+  async getHome(@Query('tab') tab: string = 'tech', @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
     const pageUrl = `${BASE_URL}/?tab=${tab}`;
     const html = await this.service.getHomePage(pageUrl, cookie);
     return html;
   }
 
   @Get('list')
-  async getList(@Query('page') page: number = 1, @Query('cookie') cookie: string = MOCK_COOKIE) {
+  async getList(@Query('page') page: number = 1, @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
     const pageUrl = `${BASE_URL}/recent?p=${page}`;
     const html = await this.service.getListPage(pageUrl, cookie);
     return html;
   }
 
   @Get('detail')
-  async getDetail(@Query('id') id: number = 1, @Query('cookie') cookie: string = MOCK_COOKIE) {
+  async getDetail(@Query('id') id: number = 1, @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
     const pageUrl = `${BASE_URL}/t/${id}`;
     const html = await this.service.getDetailPage(pageUrl, cookie);
     return html;
@@ -39,7 +40,7 @@ export class V2exController {
   async getDetailReplay(
     @Query('id') id: number = 1,
     @Query('page') page: number = 1,
-    @Query('cookie') cookie: string = MOCK_COOKIE
+    @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE
   ) {
     const pageUrl = `${BASE_URL}/t/${id}?p=${page}`;
     const html = await this.service.getDetailReplay(pageUrl, cookie);
@@ -51,7 +52,7 @@ export class V2exController {
   async getNodeList(
     @Query('name') name: string,
     @Query('page') page: number = 1,
-    @Query('cookie') cookie: string = MOCK_COOKIE
+    @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE
   ) {
     const pageUrl = `${BASE_URL}/go/${name}?p=${page}`;
     const html = await this.service.getNodeList(pageUrl, cookie);
@@ -59,7 +60,7 @@ export class V2exController {
   }
   // 节点列表
   @Get('user-info')
-  async getUserInfo(@Query('nickname') nickname: string, @Query('cookie') cookie: string = MOCK_COOKIE) {
+  async getUserInfo(@Query('nickname') nickname: string, @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
     const pageUrl = `${BASE_URL}/member/${nickname}`;
     const html = await this.service.getUserInfo(pageUrl, cookie);
     return html;

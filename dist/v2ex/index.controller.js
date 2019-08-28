@@ -72,21 +72,21 @@ let V2exController = class V2exController {
 };
 __decorate([
     common_1.Get('tab'),
-    __param(0, common_1.Query('tab')), __param(1, common_1.Query('cookie')),
+    __param(0, common_1.Query('tab')), __param(1, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getHome", null);
 __decorate([
     common_1.Get('list'),
-    __param(0, common_1.Query('page')), __param(1, common_1.Query('cookie')),
+    __param(0, common_1.Query('page')), __param(1, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getList", null);
 __decorate([
     common_1.Get('detail'),
-    __param(0, common_1.Query('id')), __param(1, common_1.Query('cookie')),
+    __param(0, common_1.Query('id')), __param(1, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)
@@ -95,7 +95,7 @@ __decorate([
     common_1.Get('detail-replay'),
     __param(0, common_1.Query('id')),
     __param(1, common_1.Query('page')),
-    __param(2, common_1.Query('cookie')),
+    __param(2, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number, String]),
     __metadata("design:returntype", Promise)
@@ -104,14 +104,14 @@ __decorate([
     common_1.Get('node-list'),
     __param(0, common_1.Query('name')),
     __param(1, common_1.Query('page')),
-    __param(2, common_1.Query('cookie')),
+    __param(2, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Number, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getNodeList", null);
 __decorate([
     common_1.Get('user-info'),
-    __param(0, common_1.Query('nickname')), __param(1, common_1.Query('cookie')),
+    __param(0, common_1.Query('nickname')), __param(1, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
