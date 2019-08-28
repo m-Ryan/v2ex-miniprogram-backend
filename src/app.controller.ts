@@ -16,17 +16,15 @@ const postData = {
   next: '/',
   name_value: 'ryan19961996',
   password_value: '41841800',
-  code_value: ''
-}
-
+  code_value: '',
+};
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   async getDate() {
-   return new Date().toLocaleDateString()
+    return new Date().toLocaleDateString();
   }
-
 }

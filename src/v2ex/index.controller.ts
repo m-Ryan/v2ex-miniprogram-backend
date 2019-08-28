@@ -1,11 +1,17 @@
-import { Controller, Get, Query, UseInterceptors, CacheInterceptor } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  UseInterceptors,
+  CacheInterceptor,
+} from '@nestjs/common';
 import { V2exService } from './index.service';
 import { BASE_URL } from '@/constants';
 
 @Controller('v2ex')
 @UseInterceptors(CacheInterceptor)
 export class V2exController {
-  constructor(private readonly service: V2exService) { }
+  constructor(private readonly service: V2exService) {}
 
   @Get('tab')
   async getHome(@Query('tab') tab: string = 'tech') {
@@ -29,7 +35,10 @@ export class V2exController {
   }
 
   @Get('detail-replay')
-  async getDetailReplay(@Query('id') id: number = 1, @Query('page') page: number = 1) {
+  async getDetailReplay(
+    @Query('id') id: number = 1,
+    @Query('page') page: number = 1,
+  ) {
     const pageUrl = `${BASE_URL}/t/${id}?p=${page}`;
     const html = await this.service.getDetailReplay(pageUrl);
     return html;
@@ -37,7 +46,10 @@ export class V2exController {
 
   // 节点列表
   @Get('node-list')
-  async getNodeList(@Query('name') name: string, @Query('page') page: number = 1) {
+  async getNodeList(
+    @Query('name') name: string,
+    @Query('page') page: number = 1,
+  ) {
     const pageUrl = `${BASE_URL}/go/${name}?p=${page}`;
     const html = await this.service.getNodeList(pageUrl);
     return html;
@@ -49,7 +61,4 @@ export class V2exController {
     const html = await this.service.getUserInfo(pageUrl);
     return html;
   }
-
 }
-
-
