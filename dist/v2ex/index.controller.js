@@ -78,6 +78,15 @@ let V2exController = class V2exController {
             return new userError_1.UserError('bad request');
         });
     }
+    getCollection(cookie = constants_1.MOCK_COOKIE) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (cookie) {
+                const pageUrl = `${constants_1.BASE_URL}/my/topics`;
+                return this.service.getCollection(pageUrl, cookie);
+            }
+            return new userError_1.UserError('bad request');
+        });
+    }
 };
 __decorate([
     common_1.Get('tab'),
@@ -127,6 +136,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getUserInfo", null);
+__decorate([
+    common_1.Get('collection'),
+    __param(0, common_1.Query('cookie')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], V2exController.prototype, "getCollection", null);
 V2exController = __decorate([
     common_1.Controller('v2ex'),
     common_1.UseInterceptors(common_1.CacheInterceptor),

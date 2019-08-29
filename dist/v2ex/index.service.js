@@ -22,6 +22,7 @@ const detail_1 = require("./parse/detail");
 const replay_1 = require("./parse/replay");
 const node_1 = require("./parse/node");
 const userInfo_1 = require("./parse/userInfo");
+const user_collection_1 = require("./parse/user-collection");
 let V2exService = class V2exService {
     getHomePage(url, cookie) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -57,6 +58,12 @@ let V2exService = class V2exService {
         return __awaiter(this, void 0, void 0, function* () {
             const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
             return userInfo_1.parseUserInfo(html);
+        });
+    }
+    getCollection(url, cookie) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const html = yield puppeteer_page_1.getPuppeteerPage(url, cookie);
+            return user_collection_1.parseUserCollection(html);
         });
     }
 };

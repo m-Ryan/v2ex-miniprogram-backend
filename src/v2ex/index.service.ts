@@ -6,6 +6,7 @@ import { parseDetail } from './parse/detail';
 import { parseReplay } from './parse/replay';
 import { parseNode } from './parse/node';
 import { parseUserInfo } from './parse/userInfo';
+import { parseUserCollection } from './parse/user-collection';
 
 @Injectable()
 export class V2exService {
@@ -38,4 +39,10 @@ export class V2exService {
     const html = await getPuppeteerPage(url, cookie);
     return parseUserInfo(html);
   }
+
+  async getCollection(url: string, cookie: string) {
+    const html = await getPuppeteerPage(url, cookie);
+    return parseUserCollection(html);
+  }
+
 }

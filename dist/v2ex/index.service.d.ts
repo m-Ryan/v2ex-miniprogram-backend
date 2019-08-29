@@ -141,4 +141,23 @@ export declare class V2exService {
         register_time: string;
         active_rank: string;
     }>;
+    getCollection(url: string, cookie: string): Promise<"" | {
+        title: string;
+        url: string;
+        tag: {
+            name: string;
+            url: string;
+        };
+        user: {
+            avatar: string;
+            name: string;
+            url: string;
+        };
+        last_replay: {
+            time: string;
+            user_name: string;
+            user_url: string;
+        };
+        replay_count: number;
+    }[]>;
 }

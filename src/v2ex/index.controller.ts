@@ -80,4 +80,16 @@ export class V2exController {
 
       return new UserError('bad request');
   }
+
+  // 收藏 必须登录才能使用
+  @Get('collection')
+  async getCollection(
+    @Query('cookie') cookie: string = MOCK_COOKIE) {
+      if (cookie) {
+        const pageUrl = `${BASE_URL}/my/topics`;
+        return this.service.getCollection(pageUrl, cookie);
+      }
+      return new UserError('bad request');
+  }
+
 }
