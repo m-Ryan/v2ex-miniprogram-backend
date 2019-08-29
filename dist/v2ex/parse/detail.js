@@ -16,7 +16,7 @@ function parseDetail(html) {
     return __awaiter(this, void 0, void 0, function* () {
         const $ = cheerio_1.default.load(html);
         const title = $('h1').text();
-        const desc = $('.markdown_body').text();
+        const desc = $('.markdown_body').html() || $('.topic_content').html();
         const page_count = Number($('#Main .box .page_input').val() || 0);
         const tags = $('#Main .tag')
             .map((index, ele) => {

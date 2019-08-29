@@ -3,7 +3,7 @@ export async function parseDetail(html: string) {
   const $ = cheerio.load(html);
   // 获取基本数据
   const title = $('h1').text();
-  const desc = $('.markdown_body').text();
+  const desc = $('.markdown_body').html() || $('.topic_content').html();
   const page_count = Number($('#Main .box .page_input').val() || 0);
   const tags = $('#Main .tag')
     .map((index, ele) => {
