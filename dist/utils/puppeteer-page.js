@@ -12,25 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
-function getPuppeteerPage(pageUrl, cookie) {
+function getPuppeteerPage(pageUrl, cookie, headers = {}) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const beginTime = new Date().getTime();
             console.log('爬取开始');
             let data = yield axios_1.default.get(pageUrl, {
-                headers: {
-                    scheme: 'https',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    Cookie: cookie,
-                    Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-                    'Accept-Encoding': 'gzip, deflate, br',
-                    'Accept-Language': 'zh-CN,zh;q=0.9,und;q=0.8',
-                    'Cache-Control': 'max-age=0',
-                    Connection: 'keep-alive',
-                    DNT: '1',
-                    'Upgrade-Insecure-Requests': '1',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
-                },
+                headers: Object.assign({ scheme: 'https', 'Content-Type': 'application/x-www-form-urlencoded', Cookie: cookie, Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'zh-CN,zh;q=0.9,und;q=0.8', 'Cache-Control': 'max-age=0', Connection: 'keep-alive', DNT: '1', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' }, headers),
             });
             const endTime = new Date().getTime();
             console.log('爬取结束');

@@ -87,6 +87,20 @@ let V2exController = class V2exController {
             return new userError_1.UserError('bad request');
         });
     }
+    setCollection(url, referer_id, cookie) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pageUrl = `${constants_1.BASE_URL}${url}`;
+            const referer = `https://www.v2ex.com/t/${referer_id}`;
+            return this.service.setCollection(pageUrl, cookie, referer);
+        });
+    }
+    setIgnore(url, referer_id, cookie) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pageUrl = `${constants_1.BASE_URL}${url}`;
+            const referer = `https://www.v2ex.com/t/${referer_id}`;
+            return this.service.setIgnore(pageUrl, cookie, referer);
+        });
+    }
 };
 __decorate([
     common_1.Get('tab'),
@@ -143,6 +157,24 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getCollection", null);
+__decorate([
+    common_1.Get('set-collection'),
+    __param(0, common_1.Query('url')),
+    __param(1, common_1.Query('referer_id')),
+    __param(2, common_1.Headers('v2ex-cookie')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], V2exController.prototype, "setCollection", null);
+__decorate([
+    common_1.Get('set-ignore'),
+    __param(0, common_1.Query('url')),
+    __param(1, common_1.Query('referer_id')),
+    __param(2, common_1.Headers('v2ex-cookie')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], V2exController.prototype, "setIgnore", null);
 V2exController = __decorate([
     common_1.Controller('v2ex'),
     common_1.UseInterceptors(common_1.CacheInterceptor),

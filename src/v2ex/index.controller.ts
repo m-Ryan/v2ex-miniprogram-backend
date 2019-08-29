@@ -92,4 +92,28 @@ export class V2exController {
       return new UserError('bad request');
   }
 
+  // 收藏 必须登录才能使用
+  @Get('set-collection')
+  async setCollection(
+    @Query('url') url: string,
+    @Query('referer_id') referer_id: string,
+    @Headers('v2ex-cookie') cookie: string
+    ) {
+      const pageUrl = `${BASE_URL}${url}`;
+      const referer = `https://www.v2ex.com/t/${referer_id}`
+      return this.service.setCollection(pageUrl, cookie, referer);
+  }
+
+  // 忽略 必须登录才能使用
+  @Get('set-ignore')
+  async setIgnore(
+    @Query('url') url: string,
+    @Query('referer_id') referer_id: string,
+    @Headers('v2ex-cookie') cookie: string
+    ) {
+      const pageUrl = `${BASE_URL}${url}`;
+      const referer = `https://www.v2ex.com/t/${referer_id}`
+      return this.service.setIgnore(pageUrl, cookie, referer);
+  }
+
 }

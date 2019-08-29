@@ -66,6 +66,28 @@ let V2exService = class V2exService {
             return user_collection_1.parseUserCollection(html);
         });
     }
+    setCollection(url, cookie, referer) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield puppeteer_page_1.getPuppeteerPage(url, cookie, {
+                referer
+            });
+            return {
+                message: 'ok',
+                code: 200
+            };
+        });
+    }
+    setIgnore(url, cookie, referer) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield puppeteer_page_1.getPuppeteerPage(url, cookie, {
+                referer
+            });
+            return {
+                message: 'ok',
+                code: 200
+            };
+        });
+    }
 };
 V2exService = __decorate([
     common_1.Injectable()

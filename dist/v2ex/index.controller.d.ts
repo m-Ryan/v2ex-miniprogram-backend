@@ -1,4 +1,3 @@
-/// <reference types="cheerio" />
 import { V2exService } from './index.service';
 import { UserError } from '../common/filters/userError';
 export declare class V2exController {
@@ -75,13 +74,26 @@ export declare class V2exController {
     getDetail(id?: number, cookie?: string): Promise<{
         title: string;
         desc: string;
-        tags: CheerioElement[];
+        tags: {
+            name: string;
+            href: string;
+        }[];
         time: string;
         user: {
             name: string;
             url: string;
+            avatar: string;
         };
         content: string;
+        more_info: {
+            is_collected: boolean;
+            collection_url: string;
+            is_ignore: boolean;
+            ignore_url: string;
+            click_count: number;
+            collection_count: number;
+            thank_count: number;
+        };
         replay: {
             list: {
                 user: {
@@ -164,4 +176,12 @@ export declare class V2exController {
         };
         replay_count: number;
     }[] | UserError>;
+    setCollection(url: string, referer_id: string, cookie: string): Promise<{
+        message: string;
+        code: number;
+    }>;
+    setIgnore(url: string, referer_id: string, cookie: string): Promise<{
+        message: string;
+        code: number;
+    }>;
 }

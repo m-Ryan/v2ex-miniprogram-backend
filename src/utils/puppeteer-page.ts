@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-export async function getPuppeteerPage(pageUrl: string, cookie: string) {
+export async function getPuppeteerPage(pageUrl: string, cookie: string, headers: {[key: string]: string} = {}) {
   try {
     const beginTime = new Date().getTime();
     console.log('爬取开始');
@@ -17,8 +17,8 @@ export async function getPuppeteerPage(pageUrl: string, cookie: string) {
         Connection: 'keep-alive',
         DNT: '1',
         'Upgrade-Insecure-Requests': '1',
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+        ...headers
       },
     });
     const endTime = new Date().getTime();

@@ -45,4 +45,24 @@ export class V2exService {
     return parseUserCollection(html);
   }
 
+  async setCollection(url: string, cookie: string, referer: string) {
+    await getPuppeteerPage(url, cookie, {
+      referer
+    });
+    return {
+      message: 'ok',
+      code: 200
+    };
+  }
+
+  async setIgnore(url: string, cookie: string, referer: string) {
+    await getPuppeteerPage(url, cookie, {
+      referer
+    });
+    return {
+      message: 'ok',
+      code: 200
+    };
+  }
+
 }
