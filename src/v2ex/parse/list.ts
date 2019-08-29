@@ -1,6 +1,8 @@
 import cheerio from 'cheerio';
 export async function parseList(html: string) {
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(html, {
+    decodeEntities: false
+  });
 
   // 获取tab数据
   const pageCount = Number(

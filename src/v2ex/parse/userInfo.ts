@@ -2,7 +2,9 @@ import cheerio from 'cheerio';
 
 export async function parseUserInfo(html: string) {
   try {
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html, {
+      decodeEntities: false
+    });
 
     // 获取列表数据
     const avatar = $('#Main .box .cell .avatar').attr('src');

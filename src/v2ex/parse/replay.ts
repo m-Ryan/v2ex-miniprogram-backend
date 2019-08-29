@@ -2,7 +2,9 @@ import cheerio from 'cheerio';
 
 export async function parseReplay(html: string) {
   try {
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html, {
+      decodeEntities: false
+    });
 
     // 获取列表数据
     const list = $('#Main .box .cell')

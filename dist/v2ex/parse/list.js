@@ -14,7 +14,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cheerio_1 = __importDefault(require("cheerio"));
 function parseList(html) {
     return __awaiter(this, void 0, void 0, function* () {
-        const $ = cheerio_1.default.load(html);
+        const $ = cheerio_1.default.load(html, {
+            decodeEntities: false
+        });
         const pageCount = Number($('#Main .box .page_normal')
             .last()
             .text() || 1);

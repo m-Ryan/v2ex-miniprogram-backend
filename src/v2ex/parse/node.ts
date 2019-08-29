@@ -2,7 +2,9 @@ import cheerio from 'cheerio';
 
 export async function parseNode(html: string) {
   try {
-    const $ = cheerio.load(html);
+    const $ = cheerio.load(html, {
+      decodeEntities: false
+    });
     // 获取tab数据
     const pageCount = Number(
       $('#Main .box .page_normal')

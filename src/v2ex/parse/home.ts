@@ -1,6 +1,8 @@
 import cheerio from 'cheerio';
 export async function parseHome(html: string) {
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(html, {
+    decodeEntities: false
+  });
 
   const avatar = $('#Rightbar .avatar').attr('src');
   const nickname = $('.bigger a').text();

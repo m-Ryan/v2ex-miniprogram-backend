@@ -15,7 +15,9 @@ const cheerio_1 = __importDefault(require("cheerio"));
 function parseUserInfo(html) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const $ = cheerio_1.default.load(html);
+            const $ = cheerio_1.default.load(html, {
+                decodeEntities: false
+            });
             const avatar = $('#Main .box .cell .avatar').attr('src');
             const active_rank = $('#Main .box .cell table .gray a').text();
             const register_rank = parseInt($('#Main .box .cell table .gray')

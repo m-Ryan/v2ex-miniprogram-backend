@@ -1,9 +1,12 @@
 import cheerio from 'cheerio';
 export async function parseDetail(html: string) {
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(html, {
+    decodeEntities: false
+  });
   // 获取基本数据
   const title = $('h1').text();
   const desc = $('.markdown_body').html() || $('.topic_content').html();
+  console.log(desc)
   const page_count = Number($('#Main .box .page_input').val() || 0);
   const tags = $('#Main .tag')
     .map((index, ele) => {

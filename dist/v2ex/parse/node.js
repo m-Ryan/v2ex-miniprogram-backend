@@ -15,7 +15,9 @@ const cheerio_1 = __importDefault(require("cheerio"));
 function parseNode(html) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const $ = cheerio_1.default.load(html);
+            const $ = cheerio_1.default.load(html, {
+                decodeEntities: false
+            });
             const pageCount = Number($('#Main .box .page_normal')
                 .last()
                 .text() || 1);

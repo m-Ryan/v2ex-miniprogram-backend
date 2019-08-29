@@ -14,9 +14,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cheerio_1 = __importDefault(require("cheerio"));
 function parseDetail(html) {
     return __awaiter(this, void 0, void 0, function* () {
-        const $ = cheerio_1.default.load(html);
+        const $ = cheerio_1.default.load(html, {
+            decodeEntities: false
+        });
         const title = $('h1').text();
         const desc = $('.markdown_body').html() || $('.topic_content').html();
+        console.log(desc);
         const page_count = Number($('#Main .box .page_input').val() || 0);
         const tags = $('#Main .tag')
             .map((index, ele) => {
