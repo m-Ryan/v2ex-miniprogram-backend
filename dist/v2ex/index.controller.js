@@ -23,7 +23,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const index_service_1 = require("./index.service");
 const constants_1 = require("../constants");
-const userError_1 = require("common/filters/userError");
+const userError_1 = require("../common/filters/userError");
 let V2exController = class V2exController {
     constructor(service) {
         this.service = service;

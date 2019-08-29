@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { V2exService } from './index.service';
 import { BASE_URL, MOCK_COOKIE } from '../constants';
-import { UserError } from 'common/filters/userError';
+import { UserError } from '../common/filters/userError';
 
 @Controller('v2ex')
 @UseInterceptors(CacheInterceptor)

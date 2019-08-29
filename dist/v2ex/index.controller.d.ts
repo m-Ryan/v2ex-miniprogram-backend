@@ -1,6 +1,6 @@
 /// <reference types="cheerio" />
 import { V2exService } from './index.service';
-import { UserError } from 'common/filters/userError';
+import { UserError } from '../common/filters/userError';
 export declare class V2exController {
     private readonly service;
     constructor(service: V2exService);
