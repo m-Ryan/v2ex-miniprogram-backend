@@ -1,5 +1,6 @@
 /// <reference types="cheerio" />
 import { V2exService } from './index.service';
+import { UserError } from 'common/filters/userError';
 export declare class V2exController {
     private readonly service;
     constructor(service: V2exService);
@@ -132,7 +133,7 @@ export declare class V2exController {
             replay_count: number;
         }[];
     }>;
-    getUserInfo(nickname: string, cookie?: string): Promise<"" | {
+    getUserInfo(nickname: string, cookie: string, v2exCookie?: string): Promise<"" | {
         avatar: string;
         nickname: string;
         bigger: string;
@@ -143,5 +144,5 @@ export declare class V2exController {
         register_rank: number;
         register_time: string;
         active_rank: string;
-    }>;
+    } | UserError>;
 }

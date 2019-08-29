@@ -23,6 +23,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const index_service_1 = require("./index.service");
 const constants_1 = require("../constants");
+const userError_1 = require("common/filters/userError");
 let V2exController = class V2exController {
     constructor(service) {
         this.service = service;
@@ -62,11 +63,19 @@ let V2exController = class V2exController {
             return html;
         });
     }
-    getUserInfo(nickname, cookie = constants_1.MOCK_COOKIE) {
+    getUserInfo(nickname, cookie, v2exCookie = constants_1.MOCK_COOKIE) {
         return __awaiter(this, void 0, void 0, function* () {
-            const pageUrl = `${constants_1.BASE_URL}/member/${nickname}`;
-            const html = yield this.service.getUserInfo(pageUrl, cookie);
-            return html;
+            let pageUrl = '';
+            if (nickname) {
+                pageUrl = `${constants_1.BASE_URL}/member/${nickname}`;
+                return this.service.getUserInfo(pageUrl, v2exCookie);
+            }
+            if (cookie) {
+                const homeData = yield this.service.getHomePage(constants_1.BASE_URL, cookie);
+                pageUrl = `${constants_1.BASE_URL}/member/${homeData.user.nickname}`;
+                return this.service.getUserInfo(pageUrl, cookie);
+            }
+            return new userError_1.UserError('bad request');
         });
     }
 };
@@ -111,9 +120,11 @@ __decorate([
 ], V2exController.prototype, "getNodeList", null);
 __decorate([
     common_1.Get('user-info'),
-    __param(0, common_1.Query('nickname')), __param(1, common_1.Headers('v2ex-cookie')),
+    __param(0, common_1.Query('nickname')),
+    __param(1, common_1.Query('cookie')),
+    __param(2, common_1.Headers('v2ex-cookie')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", Promise)
 ], V2exController.prototype, "getUserInfo", null);
 V2exController = __decorate([

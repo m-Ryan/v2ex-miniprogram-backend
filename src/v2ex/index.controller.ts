@@ -9,11 +9,12 @@ import {
 } from '@nestjs/common';
 import { V2exService } from './index.service';
 import { BASE_URL, MOCK_COOKIE } from '../constants';
+import { UserError } from 'common/filters/userError';
 
 @Controller('v2ex')
 @UseInterceptors(CacheInterceptor)
 export class V2exController {
-  constructor(private readonly service: V2exService) {}
+  constructor(private readonly service: V2exService) { }
 
   @Get('tab')
   async getHome(@Query('tab') tab: string = 'tech', @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
@@ -58,11 +59,25 @@ export class V2exController {
     const html = await this.service.getNodeList(pageUrl, cookie);
     return html;
   }
-  // 节点列表
+
+  // 用户信息
   @Get('user-info')
-  async getUserInfo(@Query('nickname') nickname: string, @Headers('v2ex-cookie') cookie: string = MOCK_COOKIE) {
-    const pageUrl = `${BASE_URL}/member/${nickname}`;
-    const html = await this.service.getUserInfo(pageUrl, cookie);
-    return html;
+  async getUserInfo(
+    @Query('nickname') nickname: string,
+    @Query('cookie') cookie: string,
+    @Headers('v2ex-cookie') v2exCookie: string = MOCK_COOKIE) {
+      let pageUrl = ''
+      if (nickname) {
+        pageUrl = `${BASE_URL}/member/${nickname}`;
+        return this.service.getUserInfo(pageUrl, v2exCookie);
+      }
+
+      if (cookie) {
+        const homeData = await this.service.getHomePage(BASE_URL, cookie);
+        pageUrl = `${BASE_URL}/member/${homeData.user.nickname}`;
+        return this.service.getUserInfo(pageUrl, cookie);
+      }
+
+      return new UserError('bad request');
   }
 }
