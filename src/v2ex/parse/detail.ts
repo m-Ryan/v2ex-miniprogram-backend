@@ -6,7 +6,7 @@ export async function parseDetail(html: string) {
   // 获取基本数据
   const title = $('h1').text();
   const desc = ($('.markdown_body') && $('.markdown_body').html()) || ($('.topic_content') && $('.topic_content').html()) || '';
-
+  console.log(desc, $('.markdown_body') && $('.markdown_body').html(), ($('.topic_content') && $('.topic_content').html()));
   const page_count = Number($('#Main .box .page_input').val() || 0);
   const tags = $('#Main .tag')
     .toArray()
