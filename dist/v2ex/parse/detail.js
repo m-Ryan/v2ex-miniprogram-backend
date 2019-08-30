@@ -18,7 +18,7 @@ function parseDetail(html) {
             decodeEntities: false
         });
         const title = $('h1').text();
-        const desc = $('.markdown_body').html() || $('.topic_content').html();
+        const desc = $('.markdown_body').html() || $('.topic_content').html() || '';
         const page_count = Number($('#Main .box .page_input').val() || 0);
         const tags = $('#Main .tag')
             .toArray()
