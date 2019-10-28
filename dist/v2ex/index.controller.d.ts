@@ -3,6 +3,8 @@ import { UserError } from '../common/filters/userError';
 export declare class V2exController {
     private readonly service;
     constructor(service: V2exService);
+    setMockCookie(cookie: string): Promise<string>;
+    getMockCookie(): Promise<string>;
     getHome(tab?: string, cookie?: string): Promise<{
         user: {
             avatar: string;
